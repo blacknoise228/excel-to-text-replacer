@@ -1,0 +1,4 @@
+excelfile: "./files/example_100.xlsx"
+pagename: "Sheet1"
+textfile: "./files/text.sql"
+outputfile: "./files/output.sql"
