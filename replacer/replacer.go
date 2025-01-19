@@ -2,13 +2,12 @@ package replacer
 
 import (
 	"excelkek/config"
-	"excelkek/excel"
+	"fmt"
 	"os"
-	"strconv"
 	"strings"
 )
 
-func Generate(config config.Config, data []excel.Schema) error {
+func Generate(config config.Config, data map[int]map[string]string, colCount int) error {
 	var result strings.Builder
 
 	template, err := os.ReadFile(config.TextFile)
@@ -16,18 +15,16 @@ func Generate(config config.Config, data []excel.Schema) error {
 		return err
 	}
 
-	for _, d := range data {
-		age := strconv.Itoa(d.Age)
-
+	for _, m := range data {
 		text := string(template)
+		for i := 1; i <= colCount; i++ {
 
-		text = strings.Replace(text, "?", d.Name, 1)
-		text = strings.Replace(text, "?", age, 1)
-		text = strings.Replace(text, "?", d.Email, 1)
-		text = strings.Replace(text, "?", d.Country, 1)
+			v := fmt.Sprintf("$%d", i)
+			d := m[v]
 
+			text = strings.Replace(text, v, d, -1)
+		}
 		result.WriteString(text + "\n")
-
 	}
 
 	err = os.WriteFile(config.OutputFile, []byte(result.String()), 0644)

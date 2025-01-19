@@ -10,9 +10,9 @@ import (
 func main() {
 	config := config.NewConfig()
 
-	excel := excel.ReadFromFile(config)
+	excel, colCount := excel.ReadFromFile(config)
 
-	err := replacer.Generate(config, excel)
+	err := replacer.Generate(config, excel, colCount)
 	if err != nil {
 		fmt.Println(err)
 	}

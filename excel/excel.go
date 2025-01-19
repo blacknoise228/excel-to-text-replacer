@@ -3,12 +3,12 @@ package excel
 import (
 	"excelkek/config"
 	"fmt"
-	"strconv"
+	"log"
 
 	"github.com/xuri/excelize/v2"
 )
 
-func ReadFromFile(config config.Config) []Schema {
+func ReadFromFile(config config.Config) (data map[int]map[string]string, colCount int) {
 	ex, err := excelize.OpenFile(config.ExcelFile)
 	if err != nil {
 		panic(err)
@@ -19,34 +19,31 @@ func ReadFromFile(config config.Config) []Schema {
 		}
 	}()
 
-	data := make([]Schema, 0)
-
 	rows, err := ex.GetRows(config.PageName)
 	if err != nil {
 		panic(err)
 	}
 
+	columns, err := ex.GetCols(config.PageName)
+	if err != nil {
+		panic(err)
+	}
+
+	data = make(map[int]map[string]string)
+
 	for i, row := range rows {
 		if i == 0 {
 			continue
 		}
-		id, err := strconv.Atoi(row[0])
-		if err != nil {
-			fmt.Println(err)
-			return nil
+		if _, ok := data[i]; !ok {
+			data[i] = make(map[string]string)
 		}
-		age, err := strconv.Atoi(row[2])
-		if err != nil {
-			fmt.Println(err)
-			return nil
+		for j, colCell := range row {
+			coLname := fmt.Sprintf("$%d", j+1)
+			data[i][coLname] = colCell
+			log.Println(coLname, row)
 		}
-		data = append(data, Schema{
-			ID:      id,
-			Name:    row[1],
-			Age:     age,
-			Email:   row[3],
-			Country: row[4],
-		})
+
 	}
-	return data
+	return data, len(columns)
 }
