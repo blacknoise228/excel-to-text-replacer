@@ -1,5 +1,5 @@
 DO $$
 BEGIN
-    INSERT INTO vacancy (title, company, address, salary)
-        VALUES ('$1', '$2', '$3', '$4');
+    INSERT INTO user (name, age, email, country)
+        VALUES ('$2', '$3', '$4', '$5');
 END $$;
