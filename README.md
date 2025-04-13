@@ -7,7 +7,7 @@ This project allows you to take data from an xlsx table and insert it into the t
 1. You specify the path to the table (Excel file)
 2. You specify the path to the template text (file with extensions .txt, .sql and others)
 3. The project pulls data from the table and replaces the $NUM characters in the template text with the corresponding values.
-4. $NUM corresponds to the order of the columns in the table. (First column is 1 dollar, fifth column is 5 dollars)
+4. $NUM corresponds to the order of the columns in the table. (First column is $1, fifth column is $5)
 
 ## Example of use
 
@@ -20,7 +20,7 @@ This project allows you to take data from an xlsx table and insert it into the t
 
 * Text template:
 
-"Hello, my name is 1 dollar, and I am 2 dollars. I live in 3 dollars."
+"Hello, my name is $1, and I am $2 . I live in $3."
 
 * Result:
 
