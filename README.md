@@ -33,13 +33,13 @@ This project allows you to take data from an xlsx table and insert it into the t
 1. Clone the repositories:
 
 ``` bash
-git clone https://github.com/blacknoise228/excelkek.git
+git clone https://github.com/blacknoise228/excel-to-text-replacer.git
 ```
 
 2. Go to the project directory:
 
 ``` bash
-git clone https://github.com/blacknoise228/excelkek.git
+cd ./excel-to-text-replacer
 ```
 
 3. Create a file template and a file to save the result and specify the path to these files in ./config.yaml.
