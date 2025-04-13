@@ -1,57 +1,57 @@
-# Таблица Excel в Текст
+# Excel table in text
 
-Этот проект позволяет вытащить данные из таблицы xlsx и вставить их в шаблон текста вместо знаков $NUM.
+This project allows you to take data from an xlsx table and insert it into the template text instead of $NUM characters.
 
-## Как работает
+## How it works
 
-1. Вы указываете путь к таблице (файл Excel)
-2. Вы указываете путь к шаблону текста (файл с расширением .txt, .sql и другие)
-3. Проект вытаскивает данные из таблицы и заменяет знаки $NUM в шаблоне текста на соответствующие значения. 
-4. $NUM соответствует порядку столбца в таблице. (Первый столбец $1, пятый столбец $5)
+1. You specify the path to the table (Excel file)
+2. You specify the path to the template text (file with extensions .txt, .sql and others)
+3. The project pulls data from the table and replaces the $NUM characters in the template text with the corresponding values.
+4. $NUM corresponds to the order of the columns in the table. (First column is 1 dollar, fifth column is 5 dollars)
 
-## Пример использования
+## Example of use
 
-* Таблица:
+* Table:
 
-| Имя | Возраст | Город |
+| Name | Age | City |
 | --- | --- | --- |
-| Иванов | 25 | Москва |
-| Петров | 30 | Санкт-Петербург |
+| Ivanov | 25 | Moscow |
+| Petrov | 30 | Saint Petersburg |
 
-* Шаблон текста:
+* Text template:
 
-"Привет, меня зовут $1 и мне $2 лет. Я живу в $3."
+"Hello, my name is 1 dollar, and I am 2 dollars. I live in 3 dollars."
 
-* Результат:
+* Result:
 
-"Привет, меня зовут Иванов и мне 25 лет. Я живу в Москве."
+"Hello, my name is Ivanov and I am 25 years old. I live in Moscow."
 
-"Привет, меня зовут Петров и мне 30 лет. Я живу в Санкт-Петербурге."
+"Hello, my name is Petrov and I am 30 years old. I live in Saint Petersburg."
 
-## Установка
+## Installation
 
-1. Клонируйте репозиторий:
+1. Clone the repositories:
 
-```bash
+``` bash
 git clone https://github.com/blacknoise228/excelkek.git
 ```
 
-2. Перейдите в директорию проекта:
+2. Go to the project directory:
 
-```bash
+``` bash
 git clone https://github.com/blacknoise228/excelkek.git
 ```
 
-3. Создайте файл с шаблоном и файл для сохранения результата и укажите в ./config.yaml пути к этим файлам.
+3. Create a file template and a file to save the result and specify the path to these files in ./config.yaml.
 
-4. Загрузите зависимости:
+4. Load as dependencies:
 
-```bash
-go mod tidy
+``` bash
+go mod, carefully
 ```
 
-5. Запустите:
+5. Run:
 
-```bash
+``` bash
 go run main.go
 ```
