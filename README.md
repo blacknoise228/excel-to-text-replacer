@@ -47,7 +47,7 @@ cd ./excel-to-text-replacer
 4. Load as dependencies:
 
 ``` bash
-go mod, carefully
+go mod tidy
 ```
 
 5. Run:
